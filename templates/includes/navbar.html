@@ -1,0 +1,41 @@
+{% load static %}
+<style>
+    nav{
+        padding: 5px;
+        background-color: #526D82;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .badge:after{
+        content:attr(value);
+        font-size:12px;
+        background: red;
+        border-radius:50%;
+        padding:3px;
+        position:relative;
+        left:-8px;
+        top:-10px;
+        opacity:0.9;
+    }
+
+</style>
+
+<nav>
+
+<div class="logo">
+    <a href="{% url 'home' %}"><img height="40" width="100" src="{% static 'logo.jpg' %}" alt="LOGO"></a>
+</div>
+
+<div class="search">
+    <input type="search" class="form-control">
+</div>
+
+<div class="others">
+    <a href="{% url 'CartPage' %}"><i class="fa badge" style="font-size:24px" id="cart-icon" value=0>&#xf07a;</i></a>
+</div>
+
+</nav>

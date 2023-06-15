@@ -1,0 +1,26 @@
+{% block css %}
+
+<style>
+.sidebar{
+    min-height: 500px;
+    border-style: solid; 
+    border-width: thin; 
+    border-color: #2b2828
+}
+.sidebar-header{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+</style>
+
+{% endblock %}
+
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h4>Categories</h4>
+    </div>
+
+    <div class="categories">
+        {% include 'includes/categories.html' %}
+    </div>
+</div>
