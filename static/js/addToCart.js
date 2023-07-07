@@ -1,6 +1,7 @@
 function addToCart(product_id,action){
     url = '/api/orders/';
-    backend_data = {"item_id": product_id,"action": action};
+    device = getCookie('device');
+    backend_data = {"item_id": product_id,"action": action,"device": device};
     var token = $("#csrftoken").val();
 
     $.ajax({
@@ -9,7 +10,6 @@ function addToCart(product_id,action){
         headers: { "X-CSRFToken": token },
         data: backend_data,
         success: function(response){
-            console.log(response)
             fetchCart();
         }
     })

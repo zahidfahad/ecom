@@ -6,12 +6,12 @@ from .models import *
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['customer_device','customer','complete','cancel']
 
 
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['order','item','quantity','total']
 
 

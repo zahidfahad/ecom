@@ -5,8 +5,6 @@ from administration.models import User
 from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
-
-
 class Order(BaseModel):
     customer_device = models.CharField(max_length=150,db_column='customer',verbose_name=_("Device ID"),blank=True,null=True)
     customer = models.ForeignKey(
@@ -16,8 +14,8 @@ class Order(BaseModel):
         verbose_name=_("CUstomer Account"),
         blank=True,null=True
     )
-    complete = models.BooleanField(default=False,db_column='complete',verbose_name=_("Designates whwther this order is complete or not."))
-    cancel = models.BooleanField(default=False,db_column='cancel',verbose_name=_("Designates whether order is cancelled or not.s"))
+    complete = models.BooleanField(default=False,db_column='complete',verbose_name=_("Designates whwther this order is complete or not"))
+    cancel = models.BooleanField(default=False,db_column='cancel',verbose_name=_("Designates whether order is cancelled or not"))
     
     def __str__(self):
         return self.customer.username if self.customer else self.customer_device
@@ -45,7 +43,7 @@ class OrderItem(BaseModel):
     total = models.PositiveIntegerField(verbose_name=_("Item Total Price"),db_column='total',null=True)
     
     def __str__(self) -> str:
-        return self.order.__str__
+        return str(self.order.complete)
     
     @property
     def get_item_total_price(self):

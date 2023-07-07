@@ -5,7 +5,7 @@ from .product.views import (
     ProductViewset
 )
 from .home.views import (
-    BannerViewset,
+    BannerViewset,ListUsers
 )
 from .order.views import (
     OrderViewset,CartDetails
@@ -23,4 +23,5 @@ router.register(r'orders', OrderViewset, 'orders')
 urlpatterns = [
     path('', include(router.urls)),
     path('get_cart_details/', CartDetails.as_view(), name = 'cart_details'),
+    path('list-users/', ListUsers.as_view())
 ]
