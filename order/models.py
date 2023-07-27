@@ -28,8 +28,7 @@ class Order(BaseModel):
     
     @property
     def get_total_cart_item(self):
-        order_items = self.items.all()
-        return sum([item.quantity for item in order_items])
+        return sum([item.quantity for item in self.items.all()])
     
     def save(self, *args, **kwargs):
         if not all(v is True for v in[self.complete,self.cancel]):

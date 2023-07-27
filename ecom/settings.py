@@ -38,6 +38,8 @@ LOCAL_APPS = [
 
 THIRD_PARTY_APPS = [
     'rest_framework',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 INSTALLED_APPS = BUILT_IN_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -54,6 +56,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ecom.urls'
 AUTH_USER_MODEL = 'administration.User'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {

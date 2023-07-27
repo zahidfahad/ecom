@@ -41,14 +41,10 @@ class CartDetails(APIView,OrderMixin):
     serializer_class = CartDetailSerializer 
     
     def get(self, request, *args, **kwargs):
-        serializer = self.serializer_class(self.get_order_details())
-        if serializer.data:
-            return Response(serializer.data)
-        
-        data = {
-            "items": [],
-            "cart_item_count": 0,
-            "grand_total": 0
-        }
-        return Response(data)
-        
+        serializer = self.serializer_class(self.get_order_details(),context={"request": request})
+        return Response(serializer.data)
+    
+    
+    
+class CheckoutViewset(viewsets.ModelViewSet):
+    pass

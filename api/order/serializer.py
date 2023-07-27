@@ -38,6 +38,7 @@ class CartDetailSerializer(serializers.ModelSerializer):
     def to_representation(self, obj):
         data = super().to_representation(obj)
         order_items = OrderItem.objects.filter(order=obj)
-        data['order_items'] = OrderItemSerializer(order_items,many=True).data
+        data['order_items'] = \
+        OrderItemSerializer(order_items,many=True,context={"request":self.context.get("request")}).data
         return data
         

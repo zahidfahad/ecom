@@ -25,7 +25,7 @@ class OrderMixin:
                 order_item.total = order_item.get_item_total_price
                 order_item.save()
             else:
-                raise APIERROR(detail={"bad_request": "quanity is already set to 0"})
+                order_item.delete()
             
         return order_item
     
@@ -55,7 +55,7 @@ class OrderMixin:
         if self.request.user.is_authenticated:
             order = Order.objects.filter(customer=self.request.user,complete=False).last()
         else:
-            order = Order.objects.filter(customer_device=self.request.query_params['device'],complete=False)    
+            order = Order.objects.filter(customer_device=self.request.query_params['device'],complete=False).last()   
         return order
             
         
